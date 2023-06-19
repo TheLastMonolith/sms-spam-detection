@@ -63,7 +63,7 @@ Content-Type: application/json
 ```  
 
 ### Conclusion
-This API provides am endpoint that allows for rendering results on an HTML GUI. By sending a POST request to the appropriate endpoint, you can obtain the classification result in the response.
+This API provides an endpoint that allows for rendering results on an HTML GUI. By sending a POST request to the appropriate endpoint, you can obtain the classification result in the response.
 
 ### Author  
 Joseph Figuracion  
