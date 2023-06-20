@@ -46,7 +46,7 @@ notebook
 └── eda_and_model_building.ipynb   
 ```
 
-### Keras Model
+### Classifier Model
 Contains python file to build the and save the classifier model.
 ```bash
 .
