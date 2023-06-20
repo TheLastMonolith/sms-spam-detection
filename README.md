@@ -13,7 +13,7 @@ This project shows how to use a classification model to determine whether an SMS
 
 ## Run the Spam Detection App
 ![](https://github.com/TheLastMonolith/sms-spam-detection/blob/main/assets/spam-app.gif)
-1. Pull the image from the docker hub:  
+1. Pull the [image](https://hub.docker.com/r/jfiguracion94/sms-api) from the docker hub:  
 ```
 docker pull jfiguracion94/sms-api:1.0.0
 ```
