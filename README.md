@@ -1,4 +1,4 @@
-# sms-spam-detection
+# sms-spam-detection 🔍
 ## Overview
 This project shows how to use a classification model to determine whether an SMS is spam or not (ham). This generates a web application written in Python (3.10) and built with the Flask framework. The classifier is built using Keras' sequential model and embedding layers, yielding an F1 score of **94%** and an accuracy of **98%**.
 
@@ -11,59 +11,71 @@ This project shows how to use a classification model to determine whether an SMS
 5. Build and save the classifier model in the model folder `python keras_model.py`
 
 
-## SMS Classification API
-You can use this API to classify SMS messages as spam or ham (non-spam). It serves as a single point for rendering results on an HTML GUI.
-
-### Base URL
-The base URL for all API endpoints is `localhost.8080`
-
-### Authentication
-Authentication is not required for accessing the API.
-
-## Endpoints
-
-### Render Results on HTML GUI
-
-This endpoint renders the classification result on an HTML GUI.
+## Run the Spam Detection App
 ![](https://github.com/TheLastMonolith/sms-spam-detection/blob/main/assets/spam-app.gif)
-#### Request Parameters
-No request parameters are required.
-
-#### Request Example
 1. Pull the image from the docker hub:  
 ```
-docker pull jfiguracion94/sms-spam-app
+docker pull jfiguracion94/sms-api:1.0.0
 ```
+> *Note*: use the tag `1.0.0` when calling the docker image, leaving it blank will call the tag `latest`, which could lead to error
 2. Run the docker command below on your local machine:  
 ```
-docker run -p 8080:8080 -d jfiguracion94/sms-spam-app
+docker run -p 8080:8080 jfiguracion94/sms-api:1.0.0
 ```
+> *Note*: you can add `-d` for detach mode, this will hide the terminal response
 3. Open the application by going to `localhost.8080` in a browser.
 4. Submit the SMS message through the text box form.
-Example:
+5. Once you click the predict button, it will show a text if it's a spam or ham.
+
+## [API Documentation](https://thelastmonolith.github.io/sms-spam-api-doc/)
+
+## Directory Tree
+### Dataset
+The [SMS Spam Collection](https://archive.ics.uci.edu/dataset/228/sms+spam+collection) is a set of SMS tagged messages that have been collected for SMS Spam research. It contains one set of SMS messages in English of 5,574 messages, tagged acording being ham (legitimate) or spam. 
+```bash
+data
+└── raw   
+    ├── SMSSPamCollection
+    └── readme
 ```
-POST localhost:8080/predict OK
-Content-Type: application/json
 
-{
-  "sms": "Get a free gift now! Call +871297"
-}
+### Notebook
+Contains the eda and model building result and evaluation.
+```bash
+notebook
+└── eda_and_model_building.ipynb   
 ```
 
-#### Response
-The response is an HTML page containing the classification result once you click the **predict** button  
-Example:
+### Keras Model
+Contains python file to build the and save the classifier model.
+```bash
+.
+├── models    
+│   ├── keras_model-0.1.0          # keras model folder
+│   └── keras_tokenizer-0.1.0.pkl  # pickled tokenizer 
+└── src
+    └── keras_model.py             # build and save classifier
 ```
-POST localhost:8080/predict OK
-Content-Type: application/json
 
-{
-  "prediction": "SPAM!"
-}
-```  
+### Flask and Docker
+```bash
+app
+├── models    
+│   ├── keras_model-0.1.0          # keras model folder
+│   └── keras_tokenizer-0.1.0.pkl  # pickled tokenizer
+├── static
+│   └── css
+│       └── main.css
+├── templates
+│   └── index.html
+├── Dockerfile                     #  Docker configuration
+├── app.py                         # flask app
+├── model.py                       # classifier 
+├── request.py                     # helper for direct api call
+└── requirements.txt
 
-### Conclusion
-This API provides an endpoint that allows for rendering results on an HTML GUI. By sending a POST request to the appropriate endpoint, you can obtain the classification result in the response.
+```
+
 
 ### Author  
 Joseph Figuracion  
