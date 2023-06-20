@@ -25,7 +25,7 @@ Authentication is not required for accessing the API.
 ### Render Results on HTML GUI
 
 This endpoint renders the classification result on an HTML GUI.
-
+![](https://github.com/TheLastMonolith/sms-spam-detection/blob/main/assets/spam-app.gif)
 #### Request Parameters
 No request parameters are required.
 
